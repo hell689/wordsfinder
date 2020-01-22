@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Words Finder</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- версия для разработки, отображает полезные предупреждения в консоли -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+</head>
+<body>
+<h2>Words Finder</h2>
+<div id="app">
+    <input v-model="letters" placeholder="Буквы в слове" size="20">
+    <input v-model="count" placeholder="Количество букв" type="number">
+    <button @click="sendButton">Найти</button>
+    <button @click="clearButton">Очистить</button>
+    <div style='margin:15px; font-weight:bold; font-size:15pt'>{{ resMessage }}</div>
+    <ul>
+        <template v-for="(word, index) in words">
+            <li style="margin:5px; font-size:15pt">{{ word }} <button @click="removeButton(index)">X</button></li>
+        </template>
+    </ul>
+</div>
+<script src="/js/main.js"></script>
+</body>
+</html>
