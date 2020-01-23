@@ -28,6 +28,7 @@ class IndexController {
     @PostMapping
     public List<String> findWords(@RequestBody Zapros zapros) {
         logger.info("Поступил запрос " + zapros);
+        System.out.println("Поступил запрос " + zapros);
         List<String> words = new ArrayList<>();
         try {
             words = wordsFinderService.findWords(zapros);
