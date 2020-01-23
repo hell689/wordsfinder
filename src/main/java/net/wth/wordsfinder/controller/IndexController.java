@@ -40,4 +40,9 @@ class IndexController {
         return words;
     }
 
+    @PostMapping("/test")
+    public String test(@RequestBody Zapros zapros) {
+        return zapros.getLetters();
+    }
+
 }

@@ -16,6 +16,7 @@
     <input v-model="count" placeholder="Количество букв" type="number">
     <button @click="sendButton">Найти</button>
     <button @click="clearButton">Очистить</button>
+    <button @click="testButton">TEST</button>
     <div style='margin:15px; font-weight:bold; font-size:15pt'>{{ resMessage }}</div>
     <ul>
         <template v-for="(word, index) in words">
