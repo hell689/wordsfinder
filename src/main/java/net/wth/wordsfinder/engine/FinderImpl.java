@@ -15,7 +15,7 @@ public class FinderImpl implements Finder{
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final String pathToFile = "files/pldf-win.txt";
+    private static final String pathToFile = "static/pldf-win.txt";
 
     @Override
     public List<String> find(String letters, int count) {

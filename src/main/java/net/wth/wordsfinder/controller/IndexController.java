@@ -33,6 +33,7 @@ class IndexController {
         try {
             words = wordsFinderService.findWords(zapros);
         } catch (Exception e) {
+            words.add("Ups, error");
             words.add(e.getMessage());
             e.printStackTrace();
             return words;
