@@ -1,5 +1,7 @@
 package net.wth.wordsfinder.engine;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
@@ -11,23 +13,27 @@ import java.util.List;
 @Component
 public class FinderImpl implements Finder{
 
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
+
     private static final String pathToFile = "files/pldf-win.txt";
 
     @Override
     public List<String> find(String letters, int count) {
-        System.out.println("Поступил запрос на поиск: Символы: *" + letters + "*, количество символов: " + count);
+        logger.info("Поступил запрос на поиск: Символы: *" + letters + "*, количество символов: " + count);
         Resource resource = new ClassPathResource(pathToFile);
 
         Reader reader = null;
         try {
+            logger.info("Попытка чтения из файла " + resource.getFile().getAbsolutePath());
             reader = new Reader(resource.getFile());
         } catch (IOException e) {
+            logger.info("Ошибка чтения из файла ");
             e.printStackTrace();
         }
         List<String> wordsWithLength = reader.findWordsWithLength(count);
-        System.out.println("Найдено всего слов с длиной " + count + " : " + wordsWithLength.size());
+        logger.info("Найдено всего слов с длиной " + count + " : " + wordsWithLength.size());
         List<String> words = analyze(wordsWithLength, letters, count);
-        System.out.println("Найдено всего слов, соответствующих условиям: " + words.size());
+        logger.info("Найдено всего слов, соответствующих условиям: " + words.size());
         return words;
     }
 

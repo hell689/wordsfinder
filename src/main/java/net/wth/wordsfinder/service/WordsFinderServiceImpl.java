@@ -2,8 +2,6 @@ package net.wth.wordsfinder.service;
 
 import net.wth.wordsfinder.domain.Zapros;
 import net.wth.wordsfinder.engine.Finder;
-import net.wth.wordsfinder.engine.FinderImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

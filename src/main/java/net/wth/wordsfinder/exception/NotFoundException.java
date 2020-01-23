@@ -1,5 +1,5 @@
 
-package net.wth.productobserver.exception;
+package net.wth.wordsfinder.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
