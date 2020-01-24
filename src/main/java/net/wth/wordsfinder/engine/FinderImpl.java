@@ -19,7 +19,7 @@ public class FinderImpl implements Finder{
 
     //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final String pathToFile = "classpath:static//pldf-win.txt";
+    private static final String pathToFile = "classpath:static/pldf-win.txt";
     @Autowired
     private ResourceLoader resourceLoader;
 
