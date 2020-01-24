@@ -13,6 +13,7 @@
 	<version>0.1</version>
 	<name>wordsfinder</name>
 	<description>Words Finder SBRest Project</description>
+	<packaging>jar</packaging>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -47,6 +48,8 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+
+
 
 	<build>
 		<plugins>

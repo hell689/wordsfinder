@@ -3,10 +3,7 @@ package net.wth.wordsfinder.engine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,15 +11,15 @@ public class Reader {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private File file;
+    private InputStream stream;
 
-    public Reader(File file) {
-        this.file = file;
+    public Reader(InputStream stream) {
+        this.stream = stream;
     }
 
     public List<String> findWordsWithLength(int length) {
         List<String> wordsWithLength = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(stream))) {
             String tmp = "";
             while ((tmp = br.readLine()) != null) {
                 if (tmp.length() == length) {
@@ -30,8 +27,8 @@ public class Reader {
                 }
             }
         } catch (IOException e) {
-            logger.info("Ошибка чтения из файла " + file.getAbsolutePath());
-            System.err.println("Ошибка чтения из файла " + file.getAbsolutePath());
+            logger.info("Ошибка чтения из файла ");
+            System.err.println("Ошибка чтения из файла ");
             e.printStackTrace();
         }
         return wordsWithLength;

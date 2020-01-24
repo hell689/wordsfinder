@@ -2,11 +2,15 @@ package net.wth.wordsfinder.engine;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +19,20 @@ public class FinderImpl implements Finder{
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    private static final String pathToFile = "static/pldf-win.txt";
+    private static final String pathToFile = "classpath:static//pldf-win.txt";
+    @Autowired
+    private ResourceLoader resourceLoader;
 
     @Override
     public List<String> find(String letters, int count) {
         logger.info("Поступил запрос на поиск: Символы: *" + letters + "*, количество символов: " + count);
-        Resource resource = new ClassPathResource(pathToFile);
+        Resource resource = resourceLoader.getResource(pathToFile);
 
         Reader reader = null;
         try {
-            logger.info("Попытка чтения из файла " + resource.getFile().getAbsolutePath());
-            reader = new Reader(resource.getFile());
+            InputStream stream = resource.getInputStream();
+            logger.info("Попытка чтения из файла ");// + resource.getFile().getAbsolutePath());
+            reader = new Reader(stream);
         } catch (IOException e) {
             logger.info("Ошибка чтения из файла ");
             e.printStackTrace();
