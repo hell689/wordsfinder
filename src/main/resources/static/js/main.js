@@ -37,25 +37,6 @@ let app = new Vue({
      },
      removeButton: function(index) {
         this.words.splice(index, 1);
-     },
-     testButton: function(){
-         this.resMessage = '';
-         let zapros = {'letters': this.letters, 'count': this.count}
-         if(zapros.count <= zapros.letters.length && zapros.count != '' && zapros.letters != '') {
-             wordsApiTest.save(zapros).then(result =>
-                 result.json().then(data => {
-                     this.words = data;
-                     if(this.words.length > 0){
-                         this.resMessage = "Найдено слов: " + this.words.length;
-                     } else {
-                        this.resMessage = "К сожалению ничего не нашлось((";
-                     }
-                 })
-              )
-         } else {
-             this.resMessage = "Ошибочный запрос! Возможно количество символов меньше запрошенного.";
-         }
-
-      },
+     }
   }
 });

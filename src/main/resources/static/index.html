@@ -8,19 +8,38 @@
     <!-- версия для разработки, отображает полезные предупреждения в консоли -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+	<style>
+		.resMess{
+			margin:15px; 
+			font-weight:bold; 
+			font-size:15pt;
+		}
+		.listElem {
+			margin:5px; 
+			font-size:15pt;
+		}
+		.inp {
+			font-size:15pt;
+			margin: 10px;
+		}
+		#app {
+			width: 400;
+			margin: auto;
+		}
+	</style>
 </head>
 <body>
-<h2>Words Finder</h2>
+
 <div id="app">
-    <input v-model="letters" placeholder="Буквы в слове" size="20">
-    <input v-model="count" placeholder="Количество букв" type="number">
-    <button @click="sendButton">Найти</button>
-    <button @click="clearButton">Очистить</button>
-    <button @click="testButton">TEST</button>
-    <div style='margin:15px; font-weight:bold; font-size:15pt'>{{ resMessage }}</div>
+	<h2>Words Finder</h2>
+    <input class="inp" v-model="letters" placeholder="Буквы в слове" size="20">
+    <input class="inp" v-model="count" placeholder="Количество букв" type="number">
+    <button class="inp" @click="sendButton">Найти</button>
+    <button class="inp" @click="clearButton">Очистить</button>
+    <div class="resMess">{{ resMessage }}</div>
     <ul>
         <template v-for="(word, index) in words">
-            <li style="margin:5px; font-size:15pt">{{ word }} <button @click="removeButton(index)">X</button></li>
+            <li class="listElem">{{ word }} <button @click="removeButton(index)">X</button></li>
         </template>
     </ul>
 </div>
