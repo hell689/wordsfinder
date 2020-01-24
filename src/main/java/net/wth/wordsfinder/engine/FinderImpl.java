@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class FinderImpl implements Finder{
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private static final String pathToFile = "classpath:static//pldf-win.txt";
     @Autowired
@@ -25,22 +25,22 @@ public class FinderImpl implements Finder{
 
     @Override
     public List<String> find(String letters, int count) {
-        logger.info("Поступил запрос на поиск: Символы: *" + letters + "*, количество символов: " + count);
+        System.out.println("Поступил запрос на поиск: Символы: *" + letters + "*, количество символов: " + count);
         Resource resource = resourceLoader.getResource(pathToFile);
 
         Reader reader = null;
         try {
             InputStream stream = resource.getInputStream();
-            logger.info("Попытка чтения из файла ");// + resource.getFile().getAbsolutePath());
+            System.out.println("Попытка чтения из файла ");// + resource.getFile().getAbsolutePath());
             reader = new Reader(stream);
         } catch (IOException e) {
-            logger.info("Ошибка чтения из файла ");
+            System.out.println("Ошибка чтения из файла ");
             e.printStackTrace();
         }
         List<String> wordsWithLength = reader.findWordsWithLength(count);
-        logger.info("Найдено всего слов с длиной " + count + " : " + wordsWithLength.size());
+        System.out.println("Найдено всего слов с длиной " + count + " : " + wordsWithLength.size());
         List<String> words = analyze(wordsWithLength, letters, count);
-        logger.info("Найдено всего слов, соответствующих условиям: " + words.size());
+        System.out.println("Найдено всего слов, соответствующих условиям: " + words.size());
         return words;
     }
 

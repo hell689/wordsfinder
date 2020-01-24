@@ -19,7 +19,7 @@ class IndexController {
 
     private WordsFinderService wordsFinderService;
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public IndexController(WordsFinderService wordsFinderService) {
         this.wordsFinderService = wordsFinderService;
@@ -27,7 +27,7 @@ class IndexController {
 
     @PostMapping
     public List<String> findWords(@RequestBody Zapros zapros) {
-        logger.info("Поступил запрос " + zapros);
+        System.out.println("Поступил запрос " + zapros);
         System.out.println("Поступил запрос " + zapros);
         List<String> words = new ArrayList<>();
         try {
@@ -38,7 +38,7 @@ class IndexController {
             e.printStackTrace();
             return words;
         }
-        logger.info("Запрос обработан");
+        System.out.println("Запрос обработан");
         return words;
     }
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Reader {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    //private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private InputStream stream;
 
@@ -27,8 +27,7 @@ public class Reader {
                 }
             }
         } catch (IOException e) {
-            logger.info("Ошибка чтения из файла ");
-            System.err.println("Ошибка чтения из файла ");
+            System.out.println("Ошибка чтения из файла ");
             e.printStackTrace();
         }
         return wordsWithLength;
