@@ -17,6 +17,6 @@ public class WordsFinderServiceImpl implements WordsFinderService {
 
     @Override
     public List<String> findWords(Zapros zapros) {
-        return finder.find(zapros.getLetters(), zapros.getCount());
+        return finder.find(zapros.getLetters().toLowerCase(), zapros.getCount());
     }
 }
